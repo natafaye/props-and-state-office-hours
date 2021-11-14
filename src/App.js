@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			channels: [
+				{
+					id: 0,
+					name: "office-hours-fdsjkfldsfs",
+					messages: [ { text: "fdesjkfldsf"}, { text: "hello" } ]
+				},
+				{
+					id: 1,
+					name: "random-chatting-fdsfds",
+					messages: []
+				}
+			],
+			//currentChannel: null, // not good code,
+      		users: [
+				{
+					firstName: "fdjsfklds",
+					messages: [ { text: "how are you"}, { text: "hello" } ]
+				}
+			],
+		}
+	}
+
+	// setCurrentChannel(channelParameter) {
+	// 	this.setState({ currentChannel: channelParameter })
+	// }
+
+	render() {
+		return (
+			<div>
+				<Sidebar channelList={this.state.channels} />
+				<Channel channel={ this.state.channels[0] }/>
+			</div>
+		)
+	}
 }
 
-export default App;
